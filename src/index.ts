@@ -23,7 +23,6 @@ app.get("/api", (_req, res) => {
 
 app.post("/api/upload", (req, res) => {
   const form = new formidable.IncomingForm({
-    uploadDir: path.join(__dirname, "public/uploads/images"),
     keepExtensions: true,
     multiples: true,
     maxFileSize: 10 * 1024 * 1024, // 10MB
