@@ -11,7 +11,7 @@ const s3 = new S3({
 
 const uploadFile = (path: any, _name: any) => {
   const params = {
-    Bucket: process.env.LET_AWS_BUCKET_NAME as string,
+    Bucket: process.env.LET_AWS_BUCKET as string,
     Key: _name,
     Body: path,
   };
