@@ -16,12 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/", (_req, res) => {
+app.get("/api", (_req, res) => {
   // serve the index.html file
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.post("/upload", (req, res) => {
+app.post("/api/upload", (req, res) => {
   const form = new formidable.IncomingForm({
     uploadDir: path.join(__dirname, "public/uploads/images"),
     keepExtensions: true,
@@ -91,6 +91,8 @@ app.post("/upload", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
-});
+// app.listen(3000, () => {
+//   console.log("Server started on port 3000");
+// });
+
+export default app;
