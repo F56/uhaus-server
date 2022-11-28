@@ -4,6 +4,9 @@ import uploadFile from "./aws/s3";
 import formidable from "formidable";
 import path from "path";
 import fs from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app: express.Application = express();
 
