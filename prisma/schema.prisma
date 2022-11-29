@@ -19,10 +19,32 @@ model User {
   country    String
   city       String
   university String
+  isStudent  Boolean
   rooms      Room[]
   reviews    Review[]
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  role       Role?    @relation(fields: [roleId], references: [id])
+  roleId     String?  @db.ObjectId
+}
+
+model Role {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  name          String       @unique
+  users         User[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  permissions   Permission[] @relation(fields: [permissionIds], references: [id])
+  permissionIds String[]     @db.ObjectId
+}
+
+model Permission {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @unique
+  roles     Role[]   @relation(fields: [roleIds], references: [id])
+  roleIds   String[] @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Room {
