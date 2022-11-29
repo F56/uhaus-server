@@ -5,7 +5,16 @@ import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
 
 const create = async (req: Request, res: Response) => {
-  const { name, email, password, mobile, country, city, university } = req.body;
+  const {
+    name,
+    email,
+    password,
+    mobile,
+    country,
+    city,
+    university,
+    isStudent,
+  } = req.body;
 
   try {
     const salt = await bcrypt.genSalt(10);
@@ -20,6 +29,7 @@ const create = async (req: Request, res: Response) => {
         country,
         city,
         university,
+        isStudent,
       },
     });
     return res.status(200).json({ user });
