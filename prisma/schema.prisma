@@ -51,7 +51,7 @@ model Room {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   title           String
   description     String
-  published       Boolean
+  published       Boolean?  @default(false)
   owner           User      @relation(fields: [ownerId], references: [id])
   ownerId         String
   images          Image[]
